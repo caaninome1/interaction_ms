@@ -3,7 +3,7 @@ class CreateLikes < ActiveRecord::Migration[7.0]
     create_table :likes do |t|
       t.string :user_id
       t.string :liked_user_id
-      t.boolean :user_like
+      t.boolean :like_status
 
       t.timestamps
     end

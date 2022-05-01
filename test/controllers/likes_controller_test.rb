@@ -12,7 +12,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create like" do
     assert_difference("Like.count") do
-      post likes_url, params: { like: { like: @like.like, liked_user_id: @like.liked_user_id, user_id: @like.user_id } }, as: :json
+      post likes_url, params: { like: { like_status: @like.like_status, liked_user_id: @like.liked_user_id, user_id: @like.user_id } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +24,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update like" do
-    patch like_url(@like), params: { like: { like: @like.like, liked_user_id: @like.liked_user_id, user_id: @like.user_id } }, as: :json
+    patch like_url(@like), params: { like: { like_status: @like.like_status, liked_user_id: @like.liked_user_id, user_id: @like.user_id } }, as: :json
     assert_response :success
   end
 

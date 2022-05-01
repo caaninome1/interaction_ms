@@ -3,9 +3,9 @@
 one:
   user_id: MyString
   liked_user_id: MyString
-  like: false
+  like_status: false
 
 two:
   user_id: MyString
   liked_user_id: MyString
-  like: false
+  like_status: false
