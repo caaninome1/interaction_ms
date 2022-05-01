@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  match_id: MyString
+  date: 2022-05-01 03:58:22
+
+two:
+  match_id: MyString
+  date: 2022-05-01 03:58:22
