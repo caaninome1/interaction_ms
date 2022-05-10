@@ -26,20 +26,10 @@ class LikesController < ApplicationController
       us_likes.each do |x|
         if x.liked_user_id == @like.user_id
           if x.like_status
-            us_match = true
-          else
-            puts "Pailander el inmortal"
+            us_match = true          
           end
         end
-      end
-
-      if us_match
-        puts "Hubo match :)"
-      else
-        puts "No hubo match :("
-      end
-    else
-      puts "No ni mergas"
+      end    
     end
 
     if @like.save
