@@ -15,7 +15,7 @@ class UsersMatchesController < ApplicationController
 
   # POST /users_matches
   def create
-    @users_match = UsersMatch.new(users_match_params)
+    @users_match = UsersMatch.new(users_match_params)    
 
     if @users_match.save
       render json: @users_match, status: :created, location: @users_match
@@ -46,6 +46,6 @@ class UsersMatchesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def users_match_params
-      params.require(:users_match).permit(:match_id, :date)
+      params.require(:users_match).permit(:user_id, :liked_user_id, :date)
     end
 end

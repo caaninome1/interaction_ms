@@ -16,12 +16,49 @@ class LikesController < ApplicationController
   # POST /likes
   def create
     @like = Like.new(like_params)
+    @users_match = UsersMatch.new()
+    us_match = false
+
+    if @like.like_status
+      us_likes = @like.all_likes(@like.liked_user_id)
+      
+
+      us_likes.each do |x|
+        if x.liked_user_id == @like.user_id
+          if x.like_status
+            us_match = true
+          else
+            puts "Pailander el inmortal"
+          end
+        end
+      end
+
+      if us_match
+        puts "Hubo match :)"
+      else
+        puts "No hubo match :("
+      end
+    else
+      puts "No ni mergas"
+    end
 
     if @like.save
       render json: @like, status: :created, location: @like
+      
     else
       render json: @like.errors, status: :unprocessable_entity
     end
+
+    if us_match
+      @users_match.user_id = @like.liked_user_id
+      @users_match.liked_user_id = @like.user_id
+      @users_match.save
+      @users_match1 = UsersMatch.new()
+      @users_match1.user_id = @like.user_id
+      @users_match1.liked_user_id = @like.liked_user_id
+      @users_match1.save      
+    end    
+    
   end
 
   # PATCH/PUT /likes/1

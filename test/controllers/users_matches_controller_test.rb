@@ -12,7 +12,7 @@ class UsersMatchesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create users_match" do
     assert_difference("UsersMatch.count") do
-      post users_matches_url, params: { users_match: { date: @users_match.date, match_id: @users_match.match_id } }, as: :json
+      post users_matches_url, params: { users_match: { date: @users_match.date, liked_user_id: @users_match.liked_user_id, user_id: @users_match.user_id } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +24,7 @@ class UsersMatchesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update users_match" do
-    patch users_match_url(@users_match), params: { users_match: { date: @users_match.date, match_id: @users_match.match_id } }, as: :json
+    patch users_match_url(@users_match), params: { users_match: { date: @users_match.date, liked_user_id: @users_match.liked_user_id, user_id: @users_match.user_id } }, as: :json
     assert_response :success
   end
 
