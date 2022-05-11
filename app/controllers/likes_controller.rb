@@ -4,12 +4,12 @@ class LikesController < ApplicationController
   # GET /likes
   def index
     @likes = Like.all
-
     render json: @likes
   end
 
-  # GET /likes/1
+  # GET /likes/:id
   def show
+    @like = Like.find(params[:id])
     render json: @like
   end
 
@@ -36,6 +36,18 @@ class LikesController < ApplicationController
   # DELETE /likes/1
   def destroy
     @like.destroy
+  end
+
+  # GET /likes/user/:user_id
+  def user_likes
+    @likes = Like.where(user_id: params[:user_id])
+    render json: @likes
+  end
+
+  # GET /likes/user_liked/:user_id
+  def user_liked_likes
+    @likes = Like.where(liked_user_id: params[:user_id])
+    render json: @likes
   end
 
   private

@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :users_matches
   resources :likes
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get 'likes/user/:user_id' => 'likes#user_likes'
+  get 'likes/user_liked/:user_id' => 'likes#user_liked_likes'
 end
