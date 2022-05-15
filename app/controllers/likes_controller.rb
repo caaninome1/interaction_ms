@@ -42,11 +42,8 @@ class LikesController < ApplicationController
     if us_match
       @users_match.user_id = @like.liked_user_id
       @users_match.liked_user_id = @like.user_id
-      @users_match.save
-      @users_match1 = UsersMatch.new()
-      @users_match1.user_id = @like.user_id
-      @users_match1.liked_user_id = @like.liked_user_id
-      @users_match1.save      
+      @users_match.date = DateTime.now
+      @users_match.save  
     end    
     
   end

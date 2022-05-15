@@ -35,7 +35,20 @@ class UsersMatchesController < ApplicationController
 
   # DELETE /users_matches/1
   def destroy
+    @like = Like.where(user_id: @users_match.liked_user_id, liked_user_id: @users_match.user_id).first
+    @like.like_status = false
+    @like.save
+    @like1 = Like.where(user_id: @users_match.user_id, liked_user_id: @users_match.liked_user_id).first
+    @like1.like_status = false
+    @like1.save
     @users_match.destroy
+    render json: @users_match
+  end
+
+  # GET /users_matches/user/:user_id
+  def user_likes
+    @match = UsersMatch.where("user_id = :user_id OR liked_user_id = :user_id", {user_id: params[:user_id]})
+    render json: @match
   end
 
   private
