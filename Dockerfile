@@ -17,6 +17,7 @@ RUN rm -rf node_modules vendor
 RUN gem install rails bundler
 RUN bundle install
 RUN yarn install
-
+#RUN rake db:create
+#RUN rake db:migrate
 # Start server
 CMD rails s -b 0.0.0.0
